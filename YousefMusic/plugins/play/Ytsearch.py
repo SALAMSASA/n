@@ -8,7 +8,7 @@ from pyrogram import filters
 
 
 
-@app.on_message(filters.command("بحث",prefixes=""))
+@app.on_message(filters.command("يوت",prefixes=""))
 async def ytsearch(_, message: Message):
     try:
         if len(message.command) < 2:
