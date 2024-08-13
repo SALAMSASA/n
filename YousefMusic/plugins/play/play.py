@@ -1,11 +1,13 @@
 import random
 import string
-from strings.filters import command
-from pyrogram import filters
-from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
+from ast import ExceptHandler
+from pyrogram import filters, Client
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, Message
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
+from config import BOT_TOKEN
+from strings.filters import command
 from YousefMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
 from YousefMusic.core.call import Zelzaly
 from YousefMusic.utils import seconds_to_min, time_to_seconds
@@ -23,54 +25,36 @@ from YousefMusic.utils.inline import (
 from YousefMusic.utils.logger import play_logs
 from YousefMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
-from config import  CHANNEL_SUDO
-from pyrogram.errors import UserNotParticipant, ChatAdminRequired, ChatWriteForbidden
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-
-async def must_join_channel(app, msg):
-    if not CHANNEL_SUDO:
-        return
-    try:
-        if msg.from_user is None:
-            return
-        try:
-            await app.get_chat_member(CHANNEL_SUDO, msg.from_user.id)
-        except UserNotParticipant:
-            if CHANNEL_SUDO.isalpha():
-                link = "https://t.me/" + CHANNEL_SUDO
-            else:
-                chat_info = await app.get_chat(CHANNEL_SUDO)
-                link = chat_info.invite_link
-            try:
-                await msg.reply(
-                    f"~︙عليك الأشتراك في قناة البوت \n~︙قناة البوت : @{CHANNEL_SUDO}.",
-                    disable_web_page_preview=True,
-                    reply_markup=InlineKeyboardMarkup([
-                        [InlineKeyboardButton("< اضغط هنا للاشتراك >", url=link)]
-                    ])
-                )
-                await msg.stop_propagation()
-            except ChatWriteForbidden:
-                pass
-    except ChatAdminRequired:
-        print(f"I m not admin in the MUST_JOIN chat {CHANNEL_SUDO}!")
-
-
-# استخدام دالة must_join_channel في دالة التشغيل المخصصة
-@app.on_message(
-    command(
+force_btn = InlineKeyboardMarkup(
+    [
         [
-            "تشغيل",
-            "شغل",
-            "cplay",
-            "cvplay",
+            InlineKeyboardButton(   
+              text=f"𝐋𝐄𝐓𝐇𝐎𝐍𓅛", url=f"t.me/A1DIIU",)                        
+        ],        
+    ]
+)
+async def check_is_joined(message):    
+    try:
+        userid = message.from_user.id
+        user_name = message.from_user.first_name
+        status = await app.get_chat_member("A1DIIU", userid)
+        return True
+    except Exception:
+        await message.reply_text(f'┇عزيزي: {message.from_user.mention}\n┇أشتࢪك في قناة البوت أولاً.\n┇قناة البوت: @A1DIIU 🍓. ',reply_markup=force_btn,disable_web_page_preview=False)
+        return False
+
+
+@app.on_message(command(["شغل","تشغيل"])
+    & filters.group
+    & ~BANNED_USERS
+)
+@app.on_message(filters.command(["play","vplay","cplay","cvplay",
             "playforce",
             "vplayforce",
             "cplayforce",
-            "cvplayforce",
-        ]
-    )
+            "cvplayforce",])
+    & filters.group
     & ~BANNED_USERS
 )
 @PlayWrapper
@@ -85,9 +69,8 @@ async def play_commnd(
     url,
     fplay,
 ):
-    # التحقق من اشتراك المستخدم في القناة المطلوبة
-    await must_join_channel(client, message)
-    
+    if not await check_is_joined(message):
+        return
     mystic = await message.reply_text(
         _["play_2"].format(channel) if channel else _["play_1"]
     )
@@ -95,8 +78,8 @@ async def play_commnd(
     slider = None
     plist_type = None
     spotify = None
-    user_id = message.from_user.id if message.from_user else "1121532100"
-    user_name = message.from_user.first_name if message.from_user else None
+    user_id = message.from_user.id
+    user_name = message.from_user.first_name
     audio_telegram = (
         (message.reply_to_message.audio or message.reply_to_message.voice)
         if message.reply_to_message
@@ -108,7 +91,7 @@ async def play_commnd(
         else None
     )
     if audio_telegram:
-        if audio_telegram.file_size > 30004857600:
+        if audio_telegram.file_size > 104857600:
             return await mystic.edit_text(_["play_5"])
         duration_min = seconds_to_min(audio_telegram.duration)
         if (audio_telegram.duration) > config.DURATION_LIMIT:
@@ -145,6 +128,50 @@ async def play_commnd(
                 return await mystic.edit_text(err)
             return await mystic.delete()
         return
+    elif video_telegram:
+        if message.reply_to_message.document:
+            try:
+                ext = video_telegram.file_name.split(".")[-1]
+                if ext.lower() not in formats:
+                    return await mystic.edit_text(
+                        _["play_7"].format(f"{' | '.join(formats)}")
+                    )
+            except:
+                return await mystic.edit_text(
+                    _["play_7"].format(f"{' | '.join(formats)}")
+                )
+        if video_telegram.file_size > config.TG_VIDEO_FILESIZE_LIMIT:
+            return await mystic.edit_text(_["play_8"])
+        file_path = await Telegram.get_filepath(video=video_telegram)
+        if await Telegram.download(_, message, mystic, file_path):
+            message_link = await Telegram.get_link(message)
+            file_name = await Telegram.get_filename(video_telegram)
+            dur = await Telegram.get_duration(video_telegram, file_path)
+            details = {
+                "title": file_name,
+                "link": message_link,
+                "path": file_path,
+                "dur": dur,
+            }
+            try:
+                await stream(
+                    _,
+                    mystic,
+                    user_id,
+                    details,
+                    chat_id,
+                    user_name,
+                    message.chat.id,
+                    video=True,
+                    streamtype="telegram",
+                    forceplay=fplay,
+                )
+            except Exception as e:
+                ex_type = type(e).__name__
+                err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
+                return await mystic.edit_text(err)
+            return await mystic.delete()
+        return
     elif url:
         if await YouTube.exists(url):
             if "playlist" in url:
@@ -164,15 +191,6 @@ async def play_commnd(
                     plist_id = url.split("=")[1]
                 img = config.PLAYLIST_IMG_URL
                 cap = _["play_9"]
-            elif "https://youtu.be" in url:
-                videoid = url.split("/")[-1].split("?")[0]
-                details, track_id = await YouTube.track(f"https://www.youtube.com/watch?v={videoid}")
-                streamtype = "youtube"
-                img = details["thumb"]
-                cap = _["play_11"].format(
-                    details["title"],
-                    details["duration_min"],
-                )    
             else:
                 try:
                     details, track_id = await YouTube.track(url)
@@ -288,7 +306,7 @@ async def play_commnd(
             return await mystic.delete()
         else:
             try:
-                await Dil.stream_call(url)
+                await Zelzaly.stream_call(url)
             except NoActiveGroupCall:
                 await mystic.edit_text(_["black_9"])
                 return await app.send_message(
@@ -501,7 +519,7 @@ async def play_music(client, CallbackQuery, _):
     return await mystic.delete()
 
 
-@app.on_callback_query(filters.regex("AnonymousAdmin") & ~BANNED_USERS)
+@app.on_callback_query(filters.regex("ZelzalymousAdmin") & ~BANNED_USERS)
 async def anonymous_check(client, CallbackQuery):
     try:
         await CallbackQuery.answer(
@@ -512,7 +530,7 @@ async def anonymous_check(client, CallbackQuery):
         pass
 
 
-@app.on_callback_query(filters.regex("DilPlaylists") & ~BANNED_USERS)
+@app.on_callback_query(filters.regex("ZelzalyPlaylists") & ~BANNED_USERS)
 @languageCB
 async def play_playlists_command(client, CallbackQuery, _):
     callback_data = CallbackQuery.data.strip()
@@ -660,4 +678,4 @@ async def slider_queries(client, CallbackQuery, _):
         )
         return await CallbackQuery.edit_message_media(
             media=med, reply_markup=InlineKeyboardMarkup(buttons)
-                )
+        )
