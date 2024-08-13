@@ -47,17 +47,17 @@ class Userbot(Client):
         )
 
     async def start(self):
-        LOGGER("سورس اكس").info(f"جارِ تشغيل الحساب المساعد . . .")
+        LOGGER("سورس ليثون").info(f"جارِ تشغيل الحساب المساعد . . .")
         if config.STRING1:
             await self.one.start()
             try:
-                await self.one.join_chat("F_U_O")
-                await self.one.join_chat("cecrr")
+                await self.one.join_chat("ll0llld")
+                await self.one.join_chat("ll0llld")
             except:
                 pass
             assistants.append(1)
             try:
-                await self.one.send_message(config.LOGGER_ID, "»تم تشغيل البوت على سورس اكس @P_6_B ✨🎵")
+                await self.one.send_message(config.LOGGER_ID, "»تم تشغيل البوت على سورس ليثون @ll0llld ✨🎵")
             except:
                 LOGGER(__name__).error(
                     "Assistant Account 1 has failed to access the log Group. Make sure that you have added your assistant to your log group and promoted as admin!"
@@ -67,18 +67,18 @@ class Userbot(Client):
             self.one.name = self.one.me.first_name
             self.one.username = self.one.me.username
             assistantids.append(self.one.id)
-            LOGGER("سورس اكس").info(f"تم بدء تشغيل الحساب المساعد {self.one.name} ...✓")
+            LOGGER("سورس ليثون").info(f"تم بدء تشغيل الحساب المساعد {self.one.name} ...✓")
 
         if config.STRING2:
             await self.two.start()
             try:
-                await self.one.join_chat("F_U_O")
-                await self.one.join_chat("cecrr")
+                await self.one.join_chat("ll0llld")
+                await self.one.join_chat("ll0llld")
             except:
                 pass
             assistants.append(2)
             try:
-                await self.two.send_message(config.LOGGER_ID, "» تم تشغيل البوت على سورس اكس @P_6_B ✨🎵")
+                await self.two.send_message(config.LOGGER_ID, "» تم تشغيل البوت على سورس ليثون @ll0llld ✨🎵")
             except:
                 LOGGER(__name__).error(
                     "Assistant Account 2 has failed to access the log Group. Make sure that you have added your assistant to your log group and promoted as admin!"
@@ -88,18 +88,18 @@ class Userbot(Client):
             self.two.name = self.two.me.mention
             self.two.username = self.two.me.username
             assistantids.append(self.two.id)
-            LOGGER("سورس اكس").info(f"Assistant Two Started as {self.two.name}")
+            LOGGER("سورس ليثون").info(f"Assistant Two Started as {self.two.name}")
 
         if config.STRING3:
             await self.three.start()
             try:
-                await self.one.join_chat("F_U_O")
-                await self.one.join_chat("cecrr")
+                await self.one.join_chat("ll0llld")
+                await self.one.join_chat("ll0llld")
             except:
                 pass
             assistants.append(3)
             try:
-                await self.three.send_message(config.LOGGER_ID, "» تم تشغيل البوت على سورس اكس @P_6_B ✨🎵")
+                await self.three.send_message(config.LOGGER_ID, "» تم تشغيل البوت على سورس ليثون @ll0llld ✨🎵")
             except:
                 LOGGER(__name__).error(
                     "Assistant Account 3 has failed to access the log Group. Make sure that you have added your assistant to your log group and promoted as admin! "
@@ -114,13 +114,13 @@ class Userbot(Client):
         if config.STRING4:
             await self.four.start()
             try:
-                await self.one.join_chat("F_U_O")
-                await self.one.join_chat("cecrr")
+                await self.one.join_chat("ll0llld")
+                await self.one.join_chat("ll0llld")
             except:
                 pass
             assistants.append(4)
             try:
-                await self.four.send_message(config.LOGGER_ID, " » تم تشغيل البوت على سورس اكس @P_6_B ✨🎵")
+                await self.four.send_message(config.LOGGER_ID, " » تم تشغيل البوت على سورس ليثون @ll0llld ✨🎵")
             except:
                 LOGGER(__name__).error(
                     "Assistant Account 4 has failed to access the log Group. Make sure that you have added your assistant to your log group and promoted as admin! "
@@ -141,7 +141,7 @@ class Userbot(Client):
                 pass
             assistants.append(5)
             try:
-                await self.five.send_message(config.LOGGER_ID, "تم تشغيل البوت على سورس اكس @P_6_B ✨🎵")
+                await self.five.send_message(config.LOGGER_ID, "تم تشغيل البوت على سورس ليثون @ll0llld ✨🎵")
             except:
                 LOGGER(__name__).error(
                     "Assistant Account 5 has failed to access the log Group. Make sure that you have added your assistant to your log group and promoted as admin! "
@@ -151,10 +151,10 @@ class Userbot(Client):
             self.five.name = self.five.me.mention
             self.five.username = self.five.me.username
             assistantids.append(self.five.id)
-            LOGGER("سورس اكس").info(f"Assistant Five Started as {self.five.name}")
+            LOGGER("سورس ليثون").info(f"Assistant Five Started as {self.five.name}")
 
     async def stop(self):
-        LOGGER("سورس اكس").info(f"Stopping Assistants...")
+        LOGGER("سورس ليثون").info(f"Stopping Assistants...")
         try:
             if config.STRING1:
                 await self.one.stop()
