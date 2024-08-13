@@ -25,7 +25,7 @@ from random import  choice, randint
 #اتار.ي
 lnk= "" +config.SUPPORT_CHAT
 
-REPLY_MESSAGE = "<b>- اهلا بك عزيزي اليك قائمة اوامر التسلية .\n- اصدار السورس ~ 5.8V .\n- اصدار الكيبورد ~ 5.8V .</b>"
+REPLY_MESSAGE = "<b>-- اهلا بك عزيزي اليك قائمة كيبورد العضو.</b>"
 
 #اتاري
 #v..vi.zi.n.n
