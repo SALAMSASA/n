@@ -1,5 +1,5 @@
-#https://t.me/F_U_O
-#_____@Y_o_v
+#https://t.me/H_8_o
+#_____@H_8_o
 
 import asyncio
 
