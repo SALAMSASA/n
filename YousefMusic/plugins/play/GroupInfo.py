@@ -9,7 +9,7 @@ from YousefMusic import app
 @app.on_message(filters.command("كشف مجموعه", prefixes=""))
 async def get_group_status(_, message: Message):
     if len(message.command) != 2:
-        await message.reply("الرجاء تقديم اسم مستخدم المجموعة. مثال:كشف مجموعه @y_o_v")
+        await message.reply("الرجاء تقديم اسم مستخدم المجموعة. مثال:كشف مجموعه @H_8_o")
         return
     
     group_username = message.command[1]
