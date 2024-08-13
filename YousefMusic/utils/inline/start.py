@@ -22,10 +22,10 @@ def start_panel(_):
         ],
         [
             InlineKeyboardButton(
-                text="‹ مطور البوت ›", url=f"https://t.me/y_o_v"
+                text="‹ مطور البوت ›", url=f"https://t.me/H_8_o"
             ),
             InlineKeyboardButton(
-                text="‹ مطور السورس ›", url=f"https://t.me/y_o_v"
+                text="‹ مطور السورس ›", url=f"https://t.me/H_8_o"
             ),
         ],
     ]
@@ -47,15 +47,15 @@ def private_panel(_, OWNER_ID: Union[bool, int] = None):
         ],
         [
             InlineKeyboardButton(
-                text="‹ مطور البوت ›", url=f"https://t.me/y_o_v"
+                text="‹ مطور البوت ›", url=f"https://t.me/H_8_o"
             ),
             InlineKeyboardButton(
-                text="‹ مطور السورس ›", url=f"https://t.me/y_o_v"
+                text="‹ مطور السورس ›", url=f"https://t.me/H_8_o"
             ),
         ],
         [
             InlineKeyboardButton(text=_["S_B_7"], user_id=OWNER_ID),
-            InlineKeyboardButton(text=_["S_B_6"], url=f"https://t.me/y_o_v"),
+            InlineKeyboardButton(text=_["S_B_6"], url=f"https://t.me/H_8_o"),
         ] if OWNER_ID else [],
         [InlineKeyboardButton(text=_["ST_B_6"], callback_data="LG")],
     ]
