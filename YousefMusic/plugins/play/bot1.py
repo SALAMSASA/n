@@ -10,7 +10,7 @@ from config import *
 
 bot_name = {}
 
-name = "بلاك"
+name = "ليثون"
 
 @app.on_message(filters.regex("تعيين اسم البوت")& filters.private & SUDOERS, group=7113)
 async def set_bot_name(client, message):
@@ -38,11 +38,11 @@ async def Mazen_bot(client, message):
     bot_username = (await app.get_me()).username
     bar = random.choice(Mazen_responses).format(name=name)
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("تحديثات البوت ⚡", url=f"https://t.me/P_6_B")]
+        [InlineKeyboardButton("تحديثات البوت ⚡", url=f"https://t.me/ll0llld")]
     ])
     
     await message.reply_text(
-        text=f"**[{bar}](https://t.me/P_6_B)**",
+        text=f"**[{bar}](https://t.me/ll0llld)**",
         disable_web_page_preview=True,
         reply_markup=keyboard,
     parse_mode=enums.ParseMode.MARKDOWN)
