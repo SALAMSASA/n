@@ -90,7 +90,7 @@ async def start_group_call(c: Client, m: Message):
         await msg.edit_text("تم تشغيل المكالمه يحب❤")
       except:
          await msg.edit_text("خلي البوت معاه صلاحية اضافة مشرفين والتحكم ف المحادثه الصوتيه او خلي حساب المساعد مشرف")
-@app.on_message(filters.regex("^قفل كول$"))
+@app.on_message(filters.regex("^قفل التصال$"))
 async def stop_group_call(c: Client, m: Message):
     chat_id = m.chat.id
     assistant = await get_assistant(chat_id)
