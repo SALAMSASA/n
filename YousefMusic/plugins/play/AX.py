@@ -11,7 +11,7 @@ from YousefMusic.utils.database import *
 from pytgcalls.exceptions import (NoActiveGroupCall,TelegramServerError,AlreadyJoinedError)
 
 
-@app.on_message(filters.regex("^مين في الكول$"))
+@app.on_message(filters.regex("^منو بل تصال$"))
 async def strcall(client, message):
     assistant = await group_assistant(Zelzaly, message.chat.id)
     try:
