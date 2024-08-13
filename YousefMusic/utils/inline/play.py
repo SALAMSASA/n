@@ -6,8 +6,8 @@ import math
 
 from pyrogram.types import InlineKeyboardButton
 
-from ZelzalMusic import app
-from ZelzalMusic.utils.formatters import time_to_seconds
+from YousefMusic import app
+from YousefMusic.utils.formatters import time_to_seconds
 from config import CH_US
 
 def track_markup(_, videoid, user_id, channel, fplay):
