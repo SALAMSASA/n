@@ -86,8 +86,8 @@ async def get_thumb(video_id):
         font2_size = 30  # حجم الخط الجديد
         font2 = ImageFont.truetype(font_path, font2_size)  # خط جديد
         
-        # وضع النص "YouSef PlAYiNg" بخط أكبر وحواف بيضاء
-        text = "YouSef PlAYiNg"
+        # وضع النص "SALAM PlAYiNg" بخط أكبر وحواف بيضاء
+        text = "SALAM PlAYiNg"
         position = (600, 150)
         text_color = "white"
         outline_color = "white"
