@@ -19,16 +19,19 @@ async def must_join_channel(bot: Client, msg: Message):
             else:
                 chat_info = await bot.get_chat(CHANNEL_SUDO)
                 link = chat_info.invite_link
-            try:
-                await msg.reply(
-                  photo="https://telegra.ph/file/e98db958e796347fb7d4b.jpg", caption=f"🎗︙عذࢪاً عمࢪي {msg.from_user.mention} انت غيࢪ مشتࢪك بقناه تحديثات البوت △\n🎗︙اشترك ثم ارسل /start",
-                    disable_web_page_preview=True,
-                    reply_markup=InlineKeyboardMarkup([
-                        [InlineKeyboardButton(f"{YAFA_NAME}", url=link)]
-                    ])
+           try:
+                await msg.reply_photo(
+                    photo="https://telegra.ph/file/e98db958e796347fb7d4b.jpg", caption=f"🎗︙عذࢪاً عمࢪي {msg.from_user.mention} انت غيࢪ مشتࢪك بقناه تحديثات البوت △\n🎗︙اشترك ثم ارسل /start !",
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton("Jᴏɪɴ", url=link),
+                            ]
+                        ]
+                    )
                 )
                 await msg.stop_propagation()
             except ChatWriteForbidden:
                 pass
     except ChatAdminRequired:
-        print(f"عليك رفع البوت آدمن في القناة أولاً ؟؟ : {YAFA_CHANNEL} !")
+        print(f"Promote me as an admin in the MUST_JOIN chat : {MUST_JOIN} !")
