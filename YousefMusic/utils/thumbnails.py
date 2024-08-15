@@ -52,7 +52,7 @@ def overlay_text(draw, text, position, font, fill="white"):
     )
 
 async def get_owner_image():
-    return "YousefMusic/assets/yousef.png"
+    return "YousefMusic/assets/SALAM.png"
 
 async def get_thumb(video_id):
     cache_path = f"cache/{video_id}.png"
