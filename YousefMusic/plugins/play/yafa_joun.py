@@ -19,7 +19,7 @@ async def must_join_channel(bot: Client, msg: Message):
             else:
                 chat_info = await bot.get_chat(CHANNEL_SUDO)
                 link = chat_info.invite_link
-           try:
+            try:
                 await msg.reply_photo(
                     photo="https://telegra.ph/file/e98db958e796347fb7d4b.jpg", caption=f"🎗︙عذࢪاً عمࢪي {msg.from_user.mention} انت غيࢪ مشتࢪك بقناه تحديثات البوت △\n🎗︙اشترك ثم ارسل /start !",
                     reply_markup=InlineKeyboardMarkup(
