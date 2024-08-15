@@ -21,8 +21,7 @@ async def must_join_channel(bot: Client, msg: Message):
                 link = chat_info.invite_link
             try:
                 await msg.reply(
-                    photo="https://telegra.ph/file/e98db958e796347fb7d4b.jpg"
-                    f"🎗︙عذࢪاً عمࢪي {msg.from_user.mention} انت غيࢪ مشتࢪك بقناه تحديثات البوت △\n🎗︙اشترك ثم ارسل /start",
+                  photo="https://telegra.ph/file/e98db958e796347fb7d4b.jpg", caption=f"🎗︙عذࢪاً عمࢪي {msg.from_user.mention} انت غيࢪ مشتࢪك بقناه تحديثات البوت △\n🎗︙اشترك ثم ارسل /start",
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup([
                         [InlineKeyboardButton(f"{YAFA_NAME}", url=link)]
