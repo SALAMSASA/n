@@ -24,7 +24,7 @@ from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 from YousefMusic.misc import SUDOERS
 from YousefMusic.plugins.play.playlist import del_plist_msg
 from YousefMusic.plugins.sudo.sudoers import sudoers_list
-from AlexaMusic.utils.database import (
+from YousefMusic.utils.database import (
     add_served_chat,
     add_served_user,
     blacklisted_chats,
