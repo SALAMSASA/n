@@ -21,7 +21,6 @@ from YousefMusic.utils.inline.play import (
 from YousefMusic.utils.logger import play_logs
 from YousefMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
-from strings import get_command, get_string
 from YousefMusic.misc import SUDOERS
 from YousefMusic.plugins.play.playlist import del_plist_msg
 from YousefMusic.plugins.sudo.sudoers import sudoers_list
