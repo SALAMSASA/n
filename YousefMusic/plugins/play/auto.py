@@ -6,28 +6,27 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, 
 from pytgcalls.exceptions import NoActiveGroupCall
 from config import START_IMG_URL
 import config
-from AlexaMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from AlexaMusic.core.call import Alexa
-from AlexaMusic.utils import seconds_to_min, time_to_seconds
-from AlexaMusic.utils.channelplay import get_channeplayCB
-from AlexaMusic.utils.database import is_video_allowed, is_served_user, get_served_chats
-from AlexaMusic.utils.decorators.language import languageCB, LanguageStart
-from AlexaMusic.utils.decorators.play import PlayWrapper
-from AlexaMusic.utils.formatters import formats
-from AlexaMusic.utils.inline.play import (
+from YousefMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
+from YousefMusic.utils import seconds_to_min, time_to_seconds
+from YousefMusic.utils.channelplay import get_channeplayCB
+from YousefMusic.utils.database import is_video_allowed, is_served_user, get_served_chats
+from YousefMusic.utils.decorators.language import languageCB, LanguageStart
+from YousefMusic.utils.decorators.play import PlayWrapper
+from YousefMusic.utils.formatters import formats
+from YousefMusic.utils.inline.play import (
     livestream_markup,
     playlist_markup,
     slider_markup,
     track_markup,
 )
-from AlexaMusic.utils.inline.playlist import botplaylist_markup
-from AlexaMusic.utils.logger import play_logs
-from AlexaMusic.utils.stream.stream import stream
+from YousefMusic.utils.inline.playlist import botplaylist_markup
+from YousefMusic.utils.logger import play_logs
+from YousefMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 from strings import get_command, get_string
-from AlexaMusic.misc import SUDOERS
-from AlexaMusic.plugins.play.playlist import del_plist_msg
-from AlexaMusic.plugins.sudo.sudoers import sudoers_list
+from YousefMusic.misc import SUDOERS
+from YousefMusic.plugins.play.playlist import del_plist_msg
+from YousefMusic.plugins.sudo.sudoers import sudoers_list
 from AlexaMusic.utils.database import (
     add_served_chat,
     add_served_user,
@@ -38,8 +37,8 @@ from AlexaMusic.utils.database import (
     is_on_off,
     is_served_private_chat,
 )
-from AlexaMusic.utils.inline import help_pannel, private_panel, start_pannel
-from AlexaMusic.utils.command import commandpro
+from YousefMusic.utils.inline import help_pannel, private_panel, start_pannel
+from YousefMusic.utils.command import commandpro
 from youtubesearchpython.__future__ import VideosSearch
 
 MESSAGE = f"""- اقوي بوت ميوزك قنوات و جروبات سرعه وجوده خارقه
