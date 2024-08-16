@@ -23,7 +23,6 @@ from YousefMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 from YousefMusic.misc import SUDOERS
 from YousefMusic.plugins.sudo.sudoers import sudoers_list
-from YousefMusic.utils.command import commandpro
 from youtubesearchpython.future import VideosSearch
 
 # Import add_served_chat and other necessary functions
