@@ -23,8 +23,12 @@ from YousefMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 from YousefMusic.misc import SUDOERS
 from YousefMusic.plugins.sudo.sudoers import sudoers_list
-from YousefMusic.utils.database import 
-(
+from YousefMusic.utils.inline import help_pannel, private_panel, start_pannel
+from YousefMusic.utils.command import commandpro
+from youtubesearchpython.future import VideosSearch
+
+# تأكد من أن كل عنصر في الاستيراد موجود في نفس السطر أو مع فصل صحيح
+from YousefMusic.utils.database import (
     add_served_chat,
     add_served_user,
     blacklisted_chats,
