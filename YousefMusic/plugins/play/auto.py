@@ -23,9 +23,7 @@ from YousefMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 from YousefMusic.misc import SUDOERS
 from YousefMusic.plugins.sudo.sudoers import sudoers_list
-
-# Import add_served_chat and other necessary functions
-from YousefMusic.utils.database import (
+(
     add_served_chat,
     add_served_user,
     blacklisted_chats,
