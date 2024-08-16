@@ -1,40 +1,27 @@
-import random
-import string
+import os
 import asyncio
-from pyrogram import Client, filters, enums
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, InputMediaPhoto
-from pytgcalls.exceptions import NoActiveGroupCall
-from config import START_IMG_URL
+import requests
 import config
-from YousefMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from YousefMusic.utils import seconds_to_min, time_to_seconds
-from YousefMusic.utils.channelplay import get_channeplayCB
-from YousefMusic.utils.decorators.language import languageCB, LanguageStart
-from YousefMusic.utils.decorators.play import PlayWrapper
-from YousefMusic.utils.formatters import formats
-from YousefMusic.utils.inline.play import (
-    livestream_markup,
-    playlist_markup,
-    slider_markup,
-    track_markup,
+import random
+import time
+from config import START_IMG_URL
+from pyrogram import filters
+from pyrogram import Client
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
+from pyrogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove,
+    InputMediaPhoto,
+    Message,
 )
-from YousefMusic.utils.logger import play_logs
-from YousefMusic.utils.stream.stream import stream
-from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
-from YousefMusic.misc import SUDOERS
-from YousefMusic.plugins.sudo.sudoers import sudoers_list(
-    add_served_chat,
-    add_served_user,
-    blacklisted_chats,
-    get_assistant,
-    get_lang,
-    get_userss,
-    is_on_off,
-    is_served_private_chat,
-)
-from YousefMusic.utils.inline import help_pannel, private_panel, start_pannel
-from YousefMusic.utils.command import commandpro
-from youtubesearchpython.__future__ import VideosSearch
+from strings.filters import command
+from YousefMusic.utils.decorators import AdminActual
+from YousefMusic import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
+from YousefMusic import app
+from random import  choice, randint
 
 MESSAGE = f"""- اقوي بوت ميوزك قنوات و جروبات سرعه وجوده خارقه
 
