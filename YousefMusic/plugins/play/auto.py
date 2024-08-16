@@ -18,7 +18,6 @@ from YousefMusic.utils.inline.play import (
     slider_markup,
     track_markup,
 )
-from YousefMusic.utils.inline.playlist import botplaylist_markup
 from YousefMusic.utils.logger import play_logs
 from AlexaMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
