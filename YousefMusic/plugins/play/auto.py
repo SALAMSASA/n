@@ -23,7 +23,12 @@ from YousefMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 from YousefMusic.misc import SUDOERS
 from YousefMusic.plugins.sudo.sudoers import sudoers_list
-(
+from YousefMusic.utils.inline import help_pannel, private_panel, start_pannel
+from YousefMusic.utils.command import commandpro
+from youtubesearchpython.future import VideosSearch
+
+# Import add_served_chat and other necessary functions
+from YousefMusic.utils.database import (
     add_served_chat,
     add_served_user,
     blacklisted_chats,
@@ -32,10 +37,8 @@ from YousefMusic.plugins.sudo.sudoers import sudoers_list
     get_userss,
     is_on_off,
     is_served_private_chat,
+    get_served_chats,  # This was missing
 )
-from YousefMusic.utils.inline import help_pannel, private_panel, start_pannel
-from YousefMusic.utils.command import commandpro
-from youtubesearchpython.__future__ import VideosSearch
 
 MESSAGE = f"""- اقوي بوت ميوزك قنوات و جروبات سرعه وجوده خارقه
 
@@ -57,7 +60,7 @@ BUTTON = InlineKeyboardMarkup(
 
 async def send_message_to_chats():
     try:
-        chats = await get_served_chats()
+        chats = await get_served_chats()  # Retrieve the served chats
         for chat_info in chats:
             chat_id = chat_info.get('chat_id')
             if isinstance(chat_id, int):
@@ -71,6 +74,6 @@ async def send_message_to_chats():
 
 @app.on_message(filters.command(["اعلان للبوت"], ""))
 async def auto_broadcast_command(client: Client, message: Message):
-    await message.reply("**تم بدء نشر اعلان للبوت في جميع المجموعات والقنوات، يرجى عدم تكرار الامر**")
+    await message.reply("تم بدء نشر اعلان للبوت في جميع المجموعات والقنوات، يرجى عدم تكرار الامر")
     await send_message_to_chats()
-    await message.reply("**تم الانتهاء من الاعلان في جميع خاص المستخزمين والمجموعات والقنوات**")
+    await message.reply("تم الانتهاء من الاعلان في جميع خاص المستخزمين والمجموعات والقنوات")
