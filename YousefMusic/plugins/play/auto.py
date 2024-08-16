@@ -7,7 +7,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 from config import START_IMG_URL
 import config
 from YousefMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from YousefMusic.core.call import Alexa
+from YousefMusic.core.call import Yousef
 from YousefMusic.utils import seconds_to_min, time_to_seconds
 from YousefMusic.utils.channelplay import get_channeplayCB
 from YousefMusic.utils.database import is_video_allowed, is_served_user, get_served_chats
