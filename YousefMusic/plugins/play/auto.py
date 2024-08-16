@@ -19,7 +19,7 @@ from YousefMusic.utils.inline.play import (
     track_markup,
 )
 from YousefMusic.utils.logger import play_logs
-from AlexaMusic.utils.stream.stream import stream
+from YousefMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 from strings import get_command, get_string
 from YousefMusic.misc import SUDOERS
