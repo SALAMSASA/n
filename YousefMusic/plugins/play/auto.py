@@ -23,7 +23,8 @@ from YousefMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 from YousefMusic.misc import SUDOERS
 from YousefMusic.plugins.sudo.sudoers import sudoers_list
-(    
+from YousefMusic.utils.database import (
+    add_served_chat,
     add_served_user,
     blacklisted_chats,
     get_assistant,
@@ -31,7 +32,7 @@ from YousefMusic.plugins.sudo.sudoers import sudoers_list
     get_userss,
     is_on_off,
     is_served_private_chat,
-    get_served_chats
+    get_served_chats,
 )
 MESSAGE = f"""- اقوي بوت ميوزك قنوات و جروبات سرعه وجوده خارقه
 
