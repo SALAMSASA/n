@@ -14,7 +14,7 @@ def update_repo():
         UPSTREAM_REPO = f"https://{GIT_USERNAME}:{config.GIT_TOKEN}@{TEMP_REPO}"
     else:
         # إذا لم يكن هناك توكن، استخدم رابط المستودع كما هو
-        UPSTREAM_REPO = REPO_LINK
+        UPSTREAM_REPO = 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
 
     try:
         # محاولة فتح المستودع الحالي
