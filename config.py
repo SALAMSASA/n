@@ -44,7 +44,7 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 
 UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/SALAMSASA/n")
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
-GIT_TOKEN = getenv("GIT_TOKEN")
+GIT_TOKEN = getenv("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")
 CH_US = getenv("CH_US", "A1DIIU")
 CHANNEL_SUDO = getenv("CHANNEL_SUDO", "A1DIIU")
 YAFA_NAME = getenv("YAFA_NAME", "اضغط هنا للاشتراك")
