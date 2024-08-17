@@ -37,6 +37,11 @@
             "value": "BAGi8fAAION8q4yYQ7L88rLq8-IbWHFVZAsd5JWvbn_4ykWNPkXi2LwD_dWVF9hJAdXLPhAAXxtdX6QpdzKRoHqkjma367P_YYBzpTr0CAT2y9zs_NVAtwwluLw3efAN6qWu6L56sn42dHTTQuF-8DjE3LiaO9geFdXC401dPY8L7z4QXsCt7H18ZNA9d01EzqqIh-q_8lNyAMtKHjEF_6B3kpV-W1Uerc5Warb3NIsI2-q1197CCGjqaGb1AwOtT81gj9BYW1GC_5F5BFcScqoU3ys1cFOU8glFxksZsgdqlbTAC5nWPgJSIi6QvTmvBrm-4bRLhF8caCpG_EW6CwcpAhZtaQAAAAGqfwr9AA",
             "required": true
         },
+    "github": {
+      "description": "Please enter your GitHub token here to install the app on Heroku.",
+      "value": "",
+      "required": true
+        },
         "HEROKU_API_KEY": {
             "description": "كـــود مفتـــاح هيروكـــو - تروح ع الرابـط »〔 https://dashboard.heroku.com/account 〕 ع آخـر خانـه وتنسـخ الكـود لهنـا",
             "value": "HRKU-d55d5bde-0d47-4235-b30e-0c678f1a1014",
