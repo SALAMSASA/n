@@ -85,18 +85,18 @@ votemode = {}
 autoclean = []
 confirmer = {}
 
-START_IMG_URL = getenv("START_IMG_URL", "https://graph.org/file/e29d3874ae4fed8fcd5b2.jpg")
-PING_IMG_URL = getenv("PING_IMG_URL", "https://graph.org/file/e29d3874ae4fed8fcd5b2.jpg")
-PLAYLIST_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
-STATS_IMG_URL = "https://graph.org/file/e29d3874ae4fed8fcd5b2.jpg"
-TELEGRAM_AUDIO_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
-TELEGRAM_VIDEO_URL = "https://graph.org/file/e29d3874ae4fed8fcd5b2.jpg"
-STREAM_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
-SOUNCLOUD_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
-YOUTUBE_IMG_URL = "https://graph.org/file/e29d3874ae4fed8fcd5b2.jpg"
-SPOTIFY_ARTIST_IMG_URL = "https://graph.org/file/e29d3874ae4fed8fcd5b2.jpg"
-SPOTIFY_ALBUM_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
-SPOTIFY_PLAYLIST_IMG_URL = "https://telegra.ph/file/1bccb452031ac902596bf.jpg"
+START_IMG_URL = getenv("START_IMG_URL", "https://te.legra.ph/file/a3e42df42ce19f28cd1e6.jpg")
+PING_IMG_URL = getenv("PING_IMG_URL", "https://te.legra.ph/file/37d94b1600ddd842b0001.jpg")
+PLAYLIST_IMG_URL = "https://te.legra.ph/file/0629e5d5618f6fadd57a4.jpg"
+STATS_IMG_URL = "https://te.legra.ph/file/f4aa128e88e6f98a2715d.jpg"
+TELEGRAM_AUDIO_URL = "https://te.legra.ph/file/c4a5150b6a700b499beea.jpg"
+TELEGRAM_VIDEO_URL = "https://te.legra.ph/file/0ff58dab031a7b8023c23.jpg"
+STREAM_IMG_URL = "https://te.legra.ph/file/3f5b8b7e8d857f1216724.jpg"
+SOUNCLOUD_IMG_URL = "https://te.legra.ph/file/0629e5d5618f6fadd57a4.jpg"
+YOUTUBE_IMG_URL = "https://te.legra.ph/file/37d94b1600ddd842b0001.jpg"
+SPOTIFY_ARTIST_IMG_URL = "https://te.legra.ph/file/a3e42df42ce19f28cd1e6.jpg"
+SPOTIFY_ALBUM_IMG_URL = "https://te.legra.ph/file/0ff58dab031a7b8023c23.jpg"
+SPOTIFY_PLAYLIST_IMG_URL = "https://te.legra.ph/file/3f5b8b7e8d857f1216724.jpg"
 
 def time_to_seconds(time):
     stringt = str(time)
