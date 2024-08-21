@@ -60,7 +60,7 @@ async def song(client, message):
         await message.reply_audio(
             audio_file,
             caption=rep,
-            performer="@mmmsc.",
+            performer="@A1DIIU.",
             thumb=thumb_name,
             title=title,
         )
