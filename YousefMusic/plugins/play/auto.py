@@ -1,11 +1,18 @@
 import random
 import string
 import asyncio
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from config import START_IMG_URL, BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
-from YousefMusic import app
+from pyrogram import Client, filters, enums
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, InputMediaPhoto
+from config import START_IMG_URL
+import config
+from YousefMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
+
 from YousefMusic.utils.database import get_served_chats
+
+from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
+
+from YousefMusic.misc import SUDOERS
+
 
 MESSAGE = f"""- اقوي بوت ميوزك قنوات و جروبات سرعه وجوده خارقه
 
@@ -15,7 +22,7 @@ MESSAGE = f"""- اقوي بوت ميوزك قنوات و جروبات سرعه �
 
 معرف البوت 🎸 [ @{app.username} ]
 
-➤ 𝘉𝘰𝘁 𝘵𝘰 𝘱𝘭𝘢𝘺 𝘴𝘰𝘯𝘨𝘴 𝘪𝘯 𝘷𝘰𝘪𝘤𝘦 𝘤𝘩𝘢𝘵 ♩🎸 \n\n-𝙱𝙾𝚃 ➤ @{app.username}"""
+➤ 𝘉𝘰𝘵 𝘵𝘰 𝘱𝘭𝘢𝘺 𝘴𝘰𝘯𝘨𝘴 𝘪𝘯 𝘷𝘰𝘪𝘤e 𝘤𝘩𝘢𝘵 ♩🎸 \n\n-𝙱𝙾𝚃 ➤ @{app.username}"""
 
 BUTTON = InlineKeyboardMarkup(
     [
@@ -33,14 +40,14 @@ async def send_message_to_chats():
             if isinstance(chat_id, int):
                 try:
                     await app.send_photo(chat_id, photo=START_IMG_URL, caption=MESSAGE, reply_markup=BUTTON)
-                    await asyncio.sleep(3)  # استخدم تأخير صغير بين الرسائل لتفادي حظر API
-                except Exception as e:
-                    print(f"Failed to send message to chat_id {chat_id}: {e}")
-    except Exception as e:
-        print(f"Failed to get served chats: {e}")
+                    await asyncio.sleep(3)
+                except Exception:
+                    pass
+    except Exception:
+        pass
 
-@app.on_message(filters.command(["اعلان للبوت"], "") & filters.user(SUDOERS))
+@app.on_message(filters.command(["اعلان للبوت"], ""))
 async def auto_broadcast_command(client: Client, message: Message):
     await message.reply("**تم بدء نشر اعلان للبوت في جميع المجموعات، يرجى عدم تكرار الامر**")
     await send_message_to_chats()
-    await message.reply("**تم الانتهاء من الاعلان في جميع مجموعات المستخدمين**")
+    await message.reply("**تم الانتهاء من الاعلان في جميع خاص المستخزمين والمجموعات**")
