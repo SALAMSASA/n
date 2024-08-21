@@ -2,9 +2,9 @@ import random
 import string
 import asyncio
 from pyrogram import Client, filters, enums
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, InputMediaPhoto
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pytgcalls.exceptions import NoActiveGroupCall
-from config import START_IMG_URL
+from config import START_IMG_URL, BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 import config
 from YousefMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
 from YousefMusic.core.call import Zelzaly
@@ -23,7 +23,6 @@ from YousefMusic.utils.inline.play import (
 from YousefMusic.utils.inline.playlist import botplaylist_markup
 from YousefMusic.utils.logger import play_logs
 from YousefMusic.utils.stream.stream import stream
-from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 from strings import get_command, get_string
 from YousefMusic.misc import SUDOERS
 from YousefMusic.plugins.play.playlist import del_plist_msg
@@ -50,7 +49,7 @@ MESSAGE = f"""- اقوي بوت ميوزك قنوات و جروبات سرعه �
 
 معرف البوت 🎸 [ @{app.username} ]
 
-➤ 𝘉𝘰𝘵 𝘵𝘰 𝘱𝘭𝘢𝘺 𝘴𝘰𝘯𝘨𝘴 𝘪𝘯 𝘷𝘰𝘪𝘤e 𝘤𝘩𝘢𝘵 ♩🎸 \n\n-𝙱𝙾𝚃 ➤ @{app.username}"""
+➤ 𝘉𝘰𝘁 𝘁𝘰 𝘱𝘭𝘢𝘆 𝘀𝘂𝘁 𝘃𝘂𝘁𝘀 𝘁𝘰 𝘃𝘂𝘁𝘀 ♩🎸 \n\n-𝙱𝙾𝚃 ➤ @{app.username}"""
 
 BUTTON = InlineKeyboardMarkup(
     [
@@ -69,13 +68,13 @@ async def send_message_to_chats():
                 try:
                     await app.send_photo(chat_id, photo=START_IMG_URL, caption=MESSAGE, reply_markup=BUTTON)
                     await asyncio.sleep(3)
-                except Exception:
-                    pass
-    except Exception:
-        pass
+                except Exception as e:
+                    play_logs.error(f"Error sending message to chat {chat_id}: {e}")
+    except Exception as e:
+        play_logs.error(f"Error in send_message_to_chats: {e}")
 
 @app.on_message(filters.command(["اعلان للبوت"], ""))
 async def auto_broadcast_command(client: Client, message: Message):
     await message.reply("**تم بدء نشر اعلان للبوت في جميع المجموعات، يرجى عدم تكرار الامر**")
     await send_message_to_chats()
-    await message.reply("**تم الانتهاء من الاعلان في جميع خاص المستخزمين والمجموعات**")
+    await message.reply("**تم الانتهاء من الاعلان في جميع المجموعات**")
