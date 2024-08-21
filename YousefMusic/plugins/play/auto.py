@@ -1,12 +1,8 @@
-import random
-import string
 import asyncio
-from pyrogram import Client, filters, enums
+from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from pytgcalls.exceptions import NoActiveGroupCall
-from config import START_IMG_URL, BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
-import config
-from YousefMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
+from config import START_IMG_URL, BANNED_USERS, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
+from YousefMusic import app
 from YousefMusic.core.call import Zelzaly
 from YousefMusic.utils import seconds_to_min, time_to_seconds
 from YousefMusic.utils.channelplay import get_channeplayCB
@@ -20,9 +16,7 @@ from YousefMusic.utils.inline.play import (
     slider_markup,
     track_markup,
 )
-from YousefMusic.utils.inline.playlist import botplaylist_markup
 from YousefMusic.utils.logger import play_logs
-from YousefMusic.utils.stream.stream import stream
 from strings import get_command, get_string
 from YousefMusic.misc import SUDOERS
 from YousefMusic.plugins.play.playlist import del_plist_msg
@@ -41,6 +35,7 @@ from YousefMusic.utils.inline import help_pannel, private_panel, start_pannel
 from YousefMusic.utils.command import commandpro
 from youtubesearchpython.__future__ import VideosSearch
 
+# الرسالة التي سيتم إرسالها
 MESSAGE = f"""- اقوي بوت ميوزك قنوات و جروبات سرعه وجوده خارقه
 
 وبدون تهنيج او تقطيع او توقف وكمان ان البوت في مميزات جامدة⚡️♥️.
@@ -51,6 +46,7 @@ MESSAGE = f"""- اقوي بوت ميوزك قنوات و جروبات سرعه �
 
 ➤ 𝘉𝘰𝘁 𝘁𝘰 𝘱𝘭𝘢𝘆 𝘀𝘂𝘁 𝘃𝘂𝘁𝘀 𝘁𝘰 𝘃𝘂𝘁𝘀 ♩🎸 \n\n-𝙱𝙾𝚃 ➤ @{app.username}"""
 
+# زر لتوجيه المستخدمين إلى رابط البوت
 BUTTON = InlineKeyboardMarkup(
     [
         [
@@ -59,6 +55,7 @@ BUTTON = InlineKeyboardMarkup(
     ]
 )
 
+# دالة لإرسال الرسائل إلى المحادثات
 async def send_message_to_chats():
     try:
         chats = await get_served_chats()
@@ -73,6 +70,7 @@ async def send_message_to_chats():
     except Exception as e:
         play_logs.error(f"Error in send_message_to_chats: {e}")
 
+# دالة للتعامل مع أمر نشر الإعلان
 @app.on_message(filters.command(["اعلان للبوت"], ""))
 async def auto_broadcast_command(client: Client, message: Message):
     await message.reply("**تم بدء نشر اعلان للبوت في جميع المجموعات، يرجى عدم تكرار الامر**")
