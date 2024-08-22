@@ -13,7 +13,6 @@ from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 
 from YousefMusic.misc import SUDOERS
 
-
 MESSAGE = f"""- - افضل بوت تشغيل اغاني وتحميلها في التلجرام ✨
 
 يعمل في القنوات والمجموعات بدون توقف نهائيا 🎗.
@@ -45,6 +44,7 @@ async def send_message_to_chats():
                     await app.send_photo(chat_id, photo=START_IMG_URL, caption=MESSAGE, reply_markup=BUTTON)
                     await asyncio.sleep(3)
                 except Exception as e:
+                    # إذا فشل الإرسال بسبب مشكلة في القناة
                     print(f"Failed to send message to chat {chat_id}: {e}")
     except Exception as e:
         print(f"Failed to retrieve chats: {e}")
