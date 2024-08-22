@@ -33,6 +33,7 @@ BUTTON = InlineKeyboardMarkup(
         ]
     ]
 )
+
 async def send_message_to_chats():
     try:
         chats = await get_served_chats()
@@ -40,15 +41,16 @@ async def send_message_to_chats():
             chat_id = chat_info.get('chat_id')
             if isinstance(chat_id, int):
                 try:
+                    # إرسال الرسالة إلى الكروب أو القناة
                     await app.send_photo(chat_id, photo=START_IMG_URL, caption=MESSAGE, reply_markup=BUTTON)
                     await asyncio.sleep(3)
-                except Exception:
-                    pass
-    except Exception:
-        pass
+                except Exception as e:
+                    print(f"Failed to send message to chat {chat_id}: {e}")
+    except Exception as e:
+        print(f"Failed to retrieve chats: {e}")
 
 @app.on_message(filters.command(["اعلان للبوت"], ""))
 async def auto_broadcast_command(client: Client, message: Message):
-    await message.reply("**تم بدء نشر اعلان للبوت في جميع المجموعات، يرجى عدم تكرار الامر**")
+    await message.reply("تم بدء نشر اعلان للبوت في جميع القنوات والمجموعات، يرجى عدم تكرار الامر")
     await send_message_to_chats()
-    await message.reply("**تم الانتهاء من الاعلان في جميع خاص المستخزمين والمجموعات**")
+    await message.reply("تم الانتهاء من الاعلان في جميع خاص المستخدمين والمجموعات")
