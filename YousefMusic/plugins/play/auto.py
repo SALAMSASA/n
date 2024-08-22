@@ -2,6 +2,7 @@ import random
 import string
 import asyncio
 from pyrogram import Client, filters, enums
+from pyrogram.errors import ChannelInvalid, ChatAdminRequired, ChatWriteForbidden, PeerIdInvalid
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, InputMediaPhoto
 from config import START_IMG_URL
 import config
@@ -43,9 +44,11 @@ async def send_message_to_chats():
                     # إرسال الرسالة إلى الكروب أو القناة
                     await app.send_photo(chat_id, photo=START_IMG_URL, caption=MESSAGE, reply_markup=BUTTON)
                     await asyncio.sleep(3)
-                except Exception as e:
-                    # إذا فشل الإرسال بسبب مشكلة في القناة
+                except (ChannelInvalid, PeerIdInvalid, ChatWriteForbidden, ChatAdminRequired) as e:
                     print(f"Failed to send message to chat {chat_id}: {e}")
+                    # هنا يمكنك إزالة القناة من قاعدة البيانات إذا كان المعرف غير صالح.
+                except Exception as e:
+                    print(f"An unexpected error occurred in chat {chat_id}: {e}")
     except Exception as e:
         print(f"Failed to retrieve chats: {e}")
 
@@ -53,4 +56,4 @@ async def send_message_to_chats():
 async def auto_broadcast_command(client: Client, message: Message):
     await message.reply("تم بدء نشر اعلان للبوت في جميع القنوات والمجموعات، يرجى عدم تكرار الامر")
     await send_message_to_chats()
-    await message.reply("تم الانتهاء من الاعلان في جميع خاص المستخدمين والمجموعات")
+    await message.reply("تم الانتهاء من الاعلان في جميع القنوات والمجموعات")
