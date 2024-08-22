@@ -8,7 +8,7 @@ from config import START_IMG_URL
 import config
 from YousefMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
 
-from YousefMusic.utils.database import get_served_chats
+from YousefMusic.utils.database import get_served_chats, remove_served_chat  # استيراد دالة إزالة القنوات
 
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 
@@ -44,9 +44,14 @@ async def send_message_to_chats():
                     # إرسال الرسالة إلى الكروب أو القناة
                     await app.send_photo(chat_id, photo=START_IMG_URL, caption=MESSAGE, reply_markup=BUTTON)
                     await asyncio.sleep(3)
-                except (ChannelInvalid, PeerIdInvalid, ChatWriteForbidden, ChatAdminRequired) as e:
-                    print(f"Failed to send message to chat {chat_id}: {e}")
-                    # هنا يمكنك إزالة القناة من قاعدة البيانات إذا كان المعرف غير صالح.
+                except ChatAdminRequired:
+                    print(f"Bot lacks admin rights in chat {chat_id}. Skipping...")
+                except (ChannelInvalid, PeerIdInvalid):
+                    print(f"Invalid chat ID {chat_id}. Skipping...")
+                    # إزالة القناة غير الصالحة من قاعدة البيانات
+                    await remove_served_chat(chat_id)
+                except ChatWriteForbidden:
+                    print(f"Bot is not allowed to send messages in chat {chat_id}. Skipping...")
                 except Exception as e:
                     print(f"An unexpected error occurred in chat {chat_id}: {e}")
     except Exception as e:
