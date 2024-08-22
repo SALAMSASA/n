@@ -8,7 +8,7 @@ from config import START_IMG_URL
 import config
 from YousefMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
 
-from YousefMusic.utils.database import get_served_chats, remove_served_chat  # استيراد دالة إزالة القنوات
+from YousefMusic.utils.database import get_served_chats, remove_served_chat
 
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 
