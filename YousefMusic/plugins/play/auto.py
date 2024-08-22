@@ -8,8 +8,7 @@ from config import START_IMG_URL
 import config
 from YousefMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
 
-# تأكد من استيراد الدوال الصحيحة من ملف database.py
-from YousefMusic.utils.database import get_served_chats
+from YousefMusic.utils.database import get_served_chats, remove_served_chat  # تأكد من استيراد دالة إزالة القنوات
 
 from config import BANNED_USERS, lyrical, CHANNEL_SUDO, YAFA_NAME, YAFA_CHANNEL
 
@@ -48,8 +47,9 @@ async def send_message_to_chats():
                 except ChatAdminRequired:
                     print(f"Bot lacks admin rights in chat {chat_id}. Skipping...")
                 except (ChannelInvalid, PeerIdInvalid):
-                    print(f"Invalid chat ID {chat_id}. Skipping...")
-                    # هنا يمكنك إضافة منطق مخصص للتعامل مع القنوات غير الصالحة بدلاً من إزالتها من قاعدة البيانات
+                    print(f"معرف دردشة غير صالح {chat_id}. جاري التخطي...")
+                    # إزالة القناة غير الصالحة من قاعدة البيانات
+                    await remove_served_chat(chat_id)  # تأكد من أن هذه الدالة موجودة وتعمل بشكل صحيح
                 except ChatWriteForbidden:
                     print(f"Bot is not allowed to send messages in chat {chat_id}. Skipping...")
                 except Exception as e:
