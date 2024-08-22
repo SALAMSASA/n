@@ -18,7 +18,7 @@ async def WelcomeDev(_, response: ChatMemberUpdated):
         await app.send_photo(
             chat_id=response.chat.id,
             reply_markup=markup,
-            photo="https://te.legra.ph/file/2b4ea3b0e94d132fb947e.mp4", 
+            photo="https://te.legra.ph/file/cc60420e08422602409c7.jpg", 
             caption=f"- لقد انضم مطور السورس هنا ⚡ {name} دخل الدردشه.\n- {bio}"
         )
     
